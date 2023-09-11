@@ -1,0 +1,18 @@
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fleetman-ingress
+spec:
+  rules:
+  - host: my-fleetman.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fleetman-service
+            port:
+              number: 80
