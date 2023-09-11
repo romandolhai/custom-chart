@@ -1,18 +1,17 @@
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: fleetman-ingress
+  name: {{ .Values.ingress.name }}
 spec:
   rules:
-  - host: my-fleetman.example.com
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: fleetman-service
+            name: {{ .Values.service.name }}
             port:
-              number: 80
+              number: {{ .Values.ingress.port }}
